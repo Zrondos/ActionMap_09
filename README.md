@@ -21,3 +21,5 @@ Follow the [Getting Started Guide](./docs/01-getting-started.md) to get your loc
 ![](https://github.com///actions/workflows//badge.svg)
 
 Zach Rondos
+
+Baptiste Marchand
