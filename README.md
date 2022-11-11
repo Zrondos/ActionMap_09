@@ -22,4 +22,6 @@ Follow the [Getting Started Guide](./docs/01-getting-started.md) to get your loc
 
 Zach Rondos
 
+Chithra Anand
+
 Baptiste Marchand
