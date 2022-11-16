@@ -16,10 +16,13 @@ class Representative < ApplicationRecord
           ocdid_temp = office.division_id
         end
       end
-
-      rep = Representative.create!({ name: official.name, ocdid: ocdid_temp,
+      
+      if not Representative.where({ name: official.name, ocdid: ocdid_temp,
+      title: title_temp }).exists?
+        rep = Representative.create!({ name: official.name, ocdid: ocdid_temp,
           title: title_temp })
-      reps.push(rep)
+        reps.push(rep)
+      end
     end
 
     reps
