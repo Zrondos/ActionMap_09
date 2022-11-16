@@ -4,4 +4,9 @@ class RepresentativesController < ApplicationController
   def index
     @representatives = Representative.all
   end
+
+  def show
+    id = params[:id]
+  end
+
 end
