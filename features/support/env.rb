@@ -12,7 +12,7 @@ require 'simplecov'
 
 SimpleCov.start 'rails' do
   # Disambiguates individual test runs. Name this 'Cucumber tests' in the env.rb
-  command_name 'RSpec Tests'
+  command_name 'Cucumber tests'
   formatter SimpleCov::Formatter::MultiFormatter.new([SimpleCov::Formatter::SimpleFormatter,
                                                       SimpleCov::Formatter::HTMLFormatter])
 end
