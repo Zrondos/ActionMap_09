@@ -30,6 +30,8 @@ AllCops:
         - lib/tasks/cucumber.rake
         - node_modules/**/*
         - vendor/**/*
+        - spec/models/representative_stub.txt
+        - spec/models/representative_spec.txt
 
 Layout/EndOfLine:
     EnforcedStyle: lf
