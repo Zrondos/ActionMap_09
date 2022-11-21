@@ -122,6 +122,7 @@ Style/PreferredHashMethods:
 
 Metrics/MethodLength:
     Max: 20
+    CountAsOne: hash
 
 RSpec/InstanceVariable:
     Enabled: false
