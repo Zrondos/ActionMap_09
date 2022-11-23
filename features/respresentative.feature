@@ -19,4 +19,11 @@ Scenario: Search leads to Representatives Table
     And I press "Search"
     Then I should see "Joseph R. Biden"
 
+Scenario: Can click on Representative name to go to their profile
+    Given I am on the representatives page
+    When I fill in "address" with "Berkeley"
+    And I press "Search"
+    When I follow "Joseph R. Biden"
+    Then I should be on the details page for "Joseph R. Biden"
+
 

@@ -32,7 +32,6 @@ class Representative < ApplicationRecord
 
   def self.create_address(address)
     address_hash = {}
-    # byebug
     unless address.nil?
       address = address[0]
       address_hash = {
