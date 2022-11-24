@@ -17,14 +17,8 @@ class Representative < ApplicationRecord
         end
       end
 
-      rep = if Representative.exists?({ name: official.name, ocdid: ocdid_temp,
-        title: title_temp })
-              Representative.find_by({ name: official.name, ocdid: ocdid_temp,
-              title: title_temp })
-            else
-              address_hash = create_address(official.address)
-              create_representative(official, title_temp, ocdid_temp, address_hash)
-            end
+      rep = Representative.find_or_create_by({ name: official.name, ocdid: ocdid_temp,
+      title: title_temp })
       reps.push(rep)
     end
     reps

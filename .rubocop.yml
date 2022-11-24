@@ -30,8 +30,12 @@ AllCops:
         - lib/tasks/cucumber.rake
         - node_modules/**/*
         - vendor/**/*
+<<<<<<< HEAD
         - spec/models/representative_stub.txt
         - spec/models/representative_spec.txt
+=======
+        - spec/**/*
+>>>>>>> 8a81fd7537e1b327ddaf4bbaa73f9c606f734c8a
 
 Layout/EndOfLine:
     EnforcedStyle: lf
