@@ -3,6 +3,23 @@
 class Representative < ApplicationRecord
   has_many :news_items, dependent: :delete_all
 
+  def self.get_address(rep)
+    rep = rep.attributes.symbolize_keys
+    fields = %i[
+      locationName
+      locationLine1
+      locationLine2
+      locationLine3
+    ]
+    address_hash = {}
+    # address_hash = { :city_state_zip => "#{rep[:city]}, #{rep[:state]} #{rep[:zip]}" }
+    fields.each do |field|
+      address_hash[field] = rep[field] unless rep[field].nil?
+    end
+    address_hash[:city_state_zip] = "#{rep[:city]}, #{rep[:state]} #{rep[:zip]}" unless rep[:city].nil?
+    address_hash
+  end
+
   def self.civic_api_to_representative_params(rep_info)
     reps = []
 
@@ -17,8 +34,14 @@ class Representative < ApplicationRecord
         end
       end
 
-      rep = Representative.find_or_create_by({ name: official.name, ocdid: ocdid_temp,
-      title: title_temp })
+      rep = if Representative.exists?({ name: official.name, ocdid: ocdid_temp,
+        title: title_temp })
+              Representative.find_by({ name: official.name, ocdid: ocdid_temp,
+                  title: title_temp })
+            else
+              address_hash = create_address(official.address)
+              create_representative(official, title_temp, ocdid_temp, address_hash)
+            end
       reps.push(rep)
     end
     reps
