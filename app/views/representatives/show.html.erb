@@ -1,5 +1,6 @@
 <h1> <%= @rep.name  %> </h1>
 <h2> <%= @rep.title %> </h2>
+<p> hi </p>
 <h2> <%= @rep.party %> </h2>
 <% if not @rep.photoUrl == nil %>
 <%= image_tag(@rep.photoUrl) %>
@@ -7,4 +8,3 @@
 <% @address.each do |key,value| %>
     <h4> <%= value %> <h4>
 <% end %>
-</ul>

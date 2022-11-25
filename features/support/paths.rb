@@ -11,7 +11,6 @@ module NavigationHelpers
   # step definition in web_steps.rb
   #
   def path_to(page_name)
-    puts page_name
 
     case page_name
 

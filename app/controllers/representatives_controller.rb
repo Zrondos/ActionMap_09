@@ -8,5 +8,6 @@ class RepresentativesController < ApplicationController
   def show
     @rep = Representative.find(params[:id])
     @address = Representative.get_address(@rep)
+    byebug
   end
 end
