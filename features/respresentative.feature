@@ -26,4 +26,9 @@ Scenario: Can click on Representative name to go to their profile
     When I follow "Joseph R. Biden"
     Then I should be on the details page for "Joseph R. Biden"
 
+Scenario: Representative Details Page Shows Correct Information
+    Given I am on the details page for "Joseph R. Biden"
+    Then I should see "Name: Joseph R. Biden"
+    And I should see "Address:  White Houte"
+    And I should see "Title: POTUS"
 

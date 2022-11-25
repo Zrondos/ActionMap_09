@@ -6,6 +6,7 @@ class RepresentativesController < ApplicationController
   end
 
   def show
-    @id = params[:id]
+    @rep = Representative.find(params[:id])
+    @address = Representative.get_address(@rep)
   end
 end
