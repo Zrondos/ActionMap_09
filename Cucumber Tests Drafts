@@ -1,0 +1,10 @@
+Cucumber Test Drafts
+
+Make sure duplicates don't reappear (gets the if exists in representatives.rb)
+Scenario: Searching for location twice does not create duplicates
+
+Login and Logout with google auth and github auth
+
+Create and add news articles
+
+Create and add events

@@ -37,3 +37,11 @@ Scenario: Representative Details Page Shows Correct Information
     And I should see "Democratic Party"
     And I should see "1600 Pennsylvania Avenue Northwest"
 
+Scenario: Representatives table shows representatives even if already in DB 
+    Given I am on the representatives page
+    When I fill in "address" with "Berkeley"
+    And I press "Search"
+    Then I go to the representatives page
+    And I fill in "address" with "Berkeley"
+    And I press "Search"
+    Then I should see "Henry C. Levy" exactly once
