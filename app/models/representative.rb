@@ -5,24 +5,20 @@ class Representative < ApplicationRecord
 
   def self.get_address(rep)
     rep = rep.attributes.symbolize_keys
-    fields = [
-    :locationName,
-    :locationLine1,
-    :locationLine2,
-    :locationLine3
+    fields = %i[
+      locationName
+      locationLine1
+      locationLine2
+      locationLine3
     ]
     address_hash = {}
-  # address_hash = { :city_state_zip => "#{rep[:city]}, #{rep[:state]} #{rep[:zip]}" }
-  fields.each do |field|
-    if rep[field] != nil
-    address_hash[field] = rep[field]
+    # address_hash = { :city_state_zip => "#{rep[:city]}, #{rep[:state]} #{rep[:zip]}" }
+    fields.each do |field|
+      address_hash[field] = rep[field] unless rep[field].nil?
     end
+    address_hash[:city_state_zip] = "#{rep[:city]}, #{rep[:state]} #{rep[:zip]}" unless rep[:city].nil?
+    address_hash
   end
-  if rep[:city] != nil
-  address_hash[:city_state_zip] = "#{rep[:city]}, #{rep[:state]} #{rep[:zip]}"
-  end
-  address_hash
-end
 
   def self.civic_api_to_representative_params(rep_info)
     reps = []
@@ -40,11 +36,11 @@ end
 
       rep = if Representative.exists?({ name: official.name, ocdid: ocdid_temp,
         title: title_temp })
-          Representative.find_by({ name: official.name, ocdid: ocdid_temp,
-              title: title_temp })
-      else
-        address_hash = create_address(official.address)
-        create_representative(official, title_temp, ocdid_temp, address_hash)
+              Representative.find_by({ name: official.name, ocdid: ocdid_temp,
+                  title: title_temp })
+            else
+              address_hash = create_address(official.address)
+              create_representative(official, title_temp, ocdid_temp, address_hash)
             end
       reps.push(rep)
     end
