@@ -18,6 +18,9 @@ module NavigationHelpers
       '/'
     when /^the details page for "([^"]*)"$/ then "/representatives/#{Representative.find_by(name: $1).id}"
 
+    when /^the news page for "([^"]*)"$/ then "/representatives/#{Representative.find_by(name: $1).id}/news_items"
+
+
 
 
     # when /^the representative\s?page$/ then /representatives
