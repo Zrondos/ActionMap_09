@@ -6,7 +6,6 @@ Given /the following representatives exist/ do |representatives_table|
   end
 end
 
-Then /I should see "(.*)" exactly once/ do |field| 
-  expect(page.body.scan(field).size).to eq(1) 
+Then /I should see "(.*)" exactly once/ do |field|
+  expect(page.body.scan(field).size).to eq(1)
 end
-
