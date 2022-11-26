@@ -5,10 +5,10 @@ So I can be politically active
 I want to see and add news items for representatives
 
 Background: Representatives in Database
+
     Given the following representatives exist:
     | name               | ocdid                            | title                               | party           | locationName|
     | Joseph R. Biden    | ocd-division/country:us          | President of the United States      | Democratic Party| 1600 Pennsylvania Avenue Northwest |
-
     Given I am on the login page
     And I press "Sign in with GitHub"
 
