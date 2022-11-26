@@ -31,6 +31,6 @@ Scenario: Can see events
     And I follow "Reset Filters"
     Given I am on the home page
     Given I am on the state page for "California"
-    Given I am on the county page for "Alameda County"
+    # Given I am on the county page for "Alameda County"
 
 
