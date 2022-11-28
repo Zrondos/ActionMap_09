@@ -25,9 +25,10 @@ class FinancesController < ApplicationController
     http = Net::HTTP.new(url.host, port)
     http.use_ssl = true
     uri = "https://api.propublica.org/campaign-finance/v1/#{cycle}/candidates/leaders/#{category}.json"
-    resp, _data = http.get(uri, 'x-api-key' => 'BDfqKXZfoJakFhcim5KU0NtCOUCwFXrxkaGmrL4O')
-    Rails.logger.debug resp.body
-    # @finances = Finance.campaign_finance_api_to_finance_params(result)
-    # render 'finances/search/#{cycle}/#{category}'
+    result, _data = http.get(uri, 'x-api-key' => 'BDfqKXZfoJakFhcim5KU0NtCOUCwFXrxkaGmrL4O')
+    Rails.logger.debug result.body
+    result = JSON.parse(result.body, object_class: OpenStruct)
+    @finances = Finance.campaign_finance_api_to_finance_params(result)
+    render 'finances/search'
   end
 end
