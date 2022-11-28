@@ -40,5 +40,8 @@ Rails.application.routes.draw do
                                                                       via: [:delete]
     end
     get '/search/(:address)' => 'search#search', :as => 'search_representatives'
-    get 'finances/search/:cycle/:category' => 'finances#search' 
+
+    # Routes for Finances
+    get 'finances' => 'finances#index'
+    get 'finances/search' => 'finances#search' 
 end

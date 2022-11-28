@@ -1,0 +1,15 @@
+= form_with(url: { controller: 'finances', action: 'search' }, method: :get) do
+    .form-group.row
+        .col-sm-2
+            = label :cycle, :cycle, class: 'col-form-label'
+        .col-sm-10
+            = select :cycle, params[:cycle], cycle_list, { include_blank: true },
+            class: 'form-control'
+    .form-group.row
+        .col-sm-2
+            = label :finance, :category, class: 'col-form-label'
+        .col-sm-10
+            = select :category, params[:category], category_list, { include_blank: true },
+            class: 'form-control'
+    .actions
+        = button_tag 'Search', class: 'btn btn-primary'
