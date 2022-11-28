@@ -1,20 +1,24 @@
 # frozen_string_literal: true
 
-require 'faraday'
-
 class FinancesController < ApplicationController
   def index
-    @finances = Finance.all
+    # @finances = Finance.all
+    @category_list = ['Candidate Loan',
+                      'Contribution Total',
+                      'Debts Owed',
+                      'Disbursements Total',
+                      'End Cash',
+                      'Individual Total',
+                      'PAC Total',
+                      'Receipts Total',
+                      'Refund Total']
+    @cycle_list = %w[2010 2012 2014 2016 2018 2020]
   end
 
   def search
-    cycle = params[:cycle]
-    category = params[:category]
-    # service = Google::Apis::CivicinfoV2::CivicInfoService.new
-    # service.key = Rails.application.credentials[:X_API_Key]
-    # response = Faraday.get("https://api.propublica.org/campaign-finance/v1/2016/candidates/search.json?query=Wilson")
-    # result = service.get_recently_candidates(cycle: cycle, page: 1, service.key)
-
+    cycle = params[:cycle][0]
+    category = params[:category][0]
+    category = Finance.get_category(category)
     uri = 'https://api.propublica.org'
     url = URI.parse(uri)
     port = '443'
@@ -23,8 +27,7 @@ class FinancesController < ApplicationController
     uri = "https://api.propublica.org/campaign-finance/v1/#{cycle}/candidates/leaders/#{category}.json"
     resp, _data = http.get(uri, 'x-api-key' => 'BDfqKXZfoJakFhcim5KU0NtCOUCwFXrxkaGmrL4O')
     Rails.logger.debug resp.body
-
     # @finances = Finance.campaign_finance_api_to_finance_params(result)
-    render 'finances/search'
+    # render 'finances/search/#{cycle}/#{category}'
   end
 end
