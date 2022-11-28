@@ -18,6 +18,7 @@ Scenario: Can see news items
     And I fill in "Title" with "Biden wins election"
     And I fill in "Link" with "cnn.com"
     And I fill in "Description" with "He wins!"
+    And I select "Free Speech" from "Issue"
     And I select "Joseph R. Biden" from "Representative"
     And I press "Save"
     And I follow "View all articles"
