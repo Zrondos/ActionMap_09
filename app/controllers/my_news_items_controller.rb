@@ -15,11 +15,23 @@ class MyNewsItemsController < SessionController
 
   def create
     @news_item = NewsItem.new(news_item_params)
-    if @news_item.save
+    if @news_item.title.empty?
+      flash[:alert] = 'Please provide an article title'
+      render :new
+    elsif @news_item.link.empty?
+      flash[:alert] = 'Please provide an article link'
+      render :new
+    elsif @news_item.description.empty?
+      flash[:alert] = 'Please provide an article description'
+      render :new
+    elsif @news_item.issue.empty?
+      flash[:alert] = 'Please select an issue'
+      render :new
+    elsif @news_item.save
       redirect_to representative_news_item_path(@representative, @news_item),
                   notice: 'News item was successfully created.'
     else
-      render :new, error: 'An error occurred when creating the news item.'
+      render :new
     end
   end
 
@@ -42,7 +54,7 @@ class MyNewsItemsController < SessionController
 
   def set_representative
     @representative = Representative.find(
-    params[:representative_id]
+      params[:representative_id]
     )
   end
 
