@@ -3,6 +3,8 @@
 class MyNewsItemsController < SessionController
   before_action :set_representative
   before_action :set_representatives_list
+  before_action :set_issue
+  before_action :set_issues_list
   before_action :set_news_item, only: %i[edit update destroy]
 
   def new
@@ -13,11 +15,23 @@ class MyNewsItemsController < SessionController
 
   def create
     @news_item = NewsItem.new(news_item_params)
-    if @news_item.save
+    if @news_item.title.empty?
+      flash[:alert] = 'Please provide an article title'
+      render :new
+    elsif @news_item.link.empty?
+      flash[:alert] = 'Please provide an article link'
+      render :new
+    elsif @news_item.description.empty?
+      flash[:alert] = 'Please provide an article description'
+      render :new
+    elsif @news_item.issue.empty?
+      flash[:alert] = 'Please select an issue'
+      render :new
+    elsif @news_item.save
       redirect_to representative_news_item_path(@representative, @news_item),
                   notice: 'News item was successfully created.'
     else
-      render :new, error: 'An error occurred when creating the news item.'
+      render :new
     end
   end
 
@@ -48,12 +62,20 @@ class MyNewsItemsController < SessionController
     @representatives_list = Representative.all.map { |r| [r.name, r.id] }
   end
 
+  def set_issue
+    @issue = params[:issue]
+  end
+
+  def set_issues_list
+    @issues_list = NewsItem.create.issues_list
+  end
+
   def set_news_item
     @news_item = NewsItem.find(params[:id])
   end
 
   # Only allow a list of trusted parameters through.
   def news_item_params
-    params.require(:news_item).permit(:news, :title, :description, :link, :representative_id)
+    params.require(:news_item).permit(:news, :title, :description, :link, :representative_id, :issue)
   end
 end

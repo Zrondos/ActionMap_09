@@ -57,6 +57,7 @@ ActiveRecord::Schema.define(version: 2022_11_28_175045) do
     t.integer "representative_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "issue", default: "Other", null: false
     t.index ["representative_id"], name: "index_news_items_on_representative_id"
   end
 
