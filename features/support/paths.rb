@@ -27,9 +27,6 @@ module NavigationHelpers
 
     when /^the county page for "([^"]*)"$/ then "state/CA/county/1"
 
-
-
-
     # when /^the representative\s?page$/ then /representatives
 
     # Add more mappings here.
