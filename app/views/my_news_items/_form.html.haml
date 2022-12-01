@@ -26,7 +26,7 @@
         .col-sm-2
             = label :news_item, :representative_id, 'Representative:', class: 'col-form-label'
         .col-sm-10
-            = select :news_item, :representative_id, representatives_list, { include_blank: true },
+            = select :news_item, :representative_id, representatives_list, { include_blank: false, :selected => @representative.id },
             class: 'form-control'
     .form-group.row
         .col-sm-2
