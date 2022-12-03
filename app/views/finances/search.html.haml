@@ -7,11 +7,11 @@
                     %thead.thead-dark
                         %tr        
                             %th Name
-                            %th category name 1
-                            %th category name 2
-                            %th etc.
+                            %th #{@cat}
                     %tbody
-                        - @finances.each do |finance|
+                        - @table.each do |row|
                             %tr
-                                %td= finance.name
+                                %td= row[0]
+                                %td= row[1]
+                            
 
