@@ -10,7 +10,6 @@ class Finance < ApplicationRecord
       'End Cash'	           => 'end-cash',
       'Individual Total'	   => 'individual-total',
       'PAC Total'	          => 'pac-total',
-      'Receipts Total'	     => 'receipts-total',
       'Refund Total'	       => 'refund-total'
     }
     category_hash[category]
@@ -35,15 +34,14 @@ class Finance < ApplicationRecord
       { name:                candidate.name,
         relative_uri:        candidate.relative_uri,
         cycle:               cycle,
-        candidate_loan:      candidate.candidate_loan,
-        contribution_total:  candidate.contribution_total,
+        candidate_loan:      candidate.candidate_loans,
+        contribution_total:  candidate.total_contributions,
         debts_owed:          candidate.debts_owed,
-        disbursements_total: candidate.disbursements_total,
+        disbursements_total: candidate.total_disbursements,
         end_cash:            candidate.end_cash,
-        individual_total:    candidate.individual_total,
-        pac_total:           candidate.pac_total,
-        receipts_total:      candidate.receipts_total,
-        refund_total:        candidate.refund_total }
+        individual_total:    candidate.total_from_individuals,
+        pac_total:           candidate.total_from_pacs,
+        refund_total:        candidate.total_refunds }
     )
   end
 end
