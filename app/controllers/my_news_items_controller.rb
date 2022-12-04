@@ -8,6 +8,7 @@ class MyNewsItemsController < SessionController
   before_action :set_news_item, only: %i[edit update destroy]
 
   def new
+    byebug
     @news_item = NewsItem.new
   end
 
