@@ -35,31 +35,30 @@ class FinancesController < ApplicationController
       @table = []
 
       for finance in @finances do
-        puts finance.name
-        category_val = ''
+        category_val = '$'
         if category == 'candidate-loan'
-          category_val = finance.candidate_loan
+          category_val += finance.candidate_loan.to_s
 
         elsif category == 'contribution-total'
-          category_val = finance.contribution_total
+          category_val += finance.contribution_total.to_s
 
         elsif category == 'debts-owed'
-          category_val = finance.debts_owed
+          category_val += finance.debts_owed
 
         elsif category == 'disbursements-total'
-          category_val = finance.disbursements_total
+          category_val += finance.disbursements_total.to_s
 
         elsif category == 'end-cash'
-          category_val = finance.end_cash
+          category_val += finance.end_cash.to_s
 
         elsif category == 'individual-total'
-          category_val = finance.individual_total
+          category_val += finance.individual_total.to_s
           
         elsif category == 'pac-total'
-          category_val = finance.pac_total
+          category_val += finance.pac_total.to_s
 
         elsif category == 'refund-total'
-          category_val = finance.refund_total
+          category_val += finance.refund_total.to_s
         end
 
         row = [finance.name, category_val]

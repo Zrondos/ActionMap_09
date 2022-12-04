@@ -37,15 +37,14 @@ ActiveRecord::Schema.define(version: 2022_11_28_175045) do
     t.string "name"
     t.integer "cycle"
     t.string "relative_uri"
-    t.decimal "candidate_loan", precision: 9, scale: 2
-    t.decimal "contribution_total", precision: 9, scale: 2
-    t.decimal "debts_owed", precision: 9, scale: 2
-    t.decimal "disbursements_total", precision: 9, scale: 2
-    t.decimal "end_cash", precision: 9, scale: 2
-    t.decimal "individual_total", precision: 9, scale: 2
-    t.decimal "pac_total", precision: 9, scale: 2
-    t.decimal "receipts_total", precision: 9, scale: 2
-    t.decimal "refund_total", precision: 9, scale: 2
+    t.decimal "candidate_loan", precision:q 9
+    t.decimal "contribution_total", precision: 9
+    t.decimal "debts_owed", precision: 9
+    t.decimal "disbursements_total", precision: 9
+    t.decimal "end_cash", precision: 9
+    t.decimal "individual_total", precision: 9
+    t.decimal "pac_total", precision: 9
+    t.decimal "refund_total", precision: 9
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
