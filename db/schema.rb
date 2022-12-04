@@ -37,7 +37,7 @@ ActiveRecord::Schema.define(version: 2022_11_28_175045) do
     t.string "name"
     t.integer "cycle"
     t.string "relative_uri"
-    t.decimal "candidate_loan", precision:q 9
+    t.decimal "candidate_loan", precision: 9
     t.decimal "contribution_total", precision: 9
     t.decimal "debts_owed", precision: 9
     t.decimal "disbursements_total", precision: 9
