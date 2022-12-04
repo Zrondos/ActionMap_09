@@ -14,8 +14,10 @@ module NavigationHelpers
 
     case page_name
 
-    when /^the home\s?page$/
-      '/'
+    when /^the home\s?page$/ then '/'
+
+    when /^the profile page$/ then '/user/profile'
+
     when /^the details page for "([^"]*)"$/ then "/representatives/#{Representative.find_by(name: $1).id}"
 
     when /^the news page for "([^"]*)"$/ then "/representatives/#{Representative.find_by(name: $1).id}/news_items"
