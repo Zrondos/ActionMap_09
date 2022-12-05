@@ -1,13 +1,13 @@
 .container-fluid
     .row
         .col-md-8.offset-md-2
-            %h1.text-center Top 20 Candidates by #{@cat} in Year #{@cyc}
+            %h1.text-center Top 20 Candidates by #{@category_name} in Year #{@cycle}
             .table-responsive-md.pt-5
                 %table.table.table-striped.table-hover#events
                     %thead.thead-dark
                         %tr
                             %th Name
-                            %th #{@cat}
+                            %th= @category_name
                     %tbody
                         - @table.each do |row|
                             %tr
