@@ -1,5 +1,5 @@
 # frozen_string_literal: true
- 
+
 class FinancesController < ApplicationController
   def index
     # @finances = Finance.all
@@ -13,7 +13,7 @@ class FinancesController < ApplicationController
                       'Refund Total']
     @cycle_list = %w[2010 2012 2014 2016 2018 2020]
   end
-  
+
   def search
     cycle = params[:cycle][0]
     @cyc = cycle
@@ -35,38 +35,47 @@ class FinancesController < ApplicationController
       @table = []
 
       for finance in @finances do
-        category_val = '$'
-        if category == 'candidate-loan'
-          category_val += finance.candidate_loan.to_s
-
-        elsif category == 'contribution-total'
-          category_val += finance.contribution_total.to_s
-
-        elsif category == 'debts-owed'
-          category_val += finance.debts_owed
-
-        elsif category == 'disbursements-total'
-          category_val += finance.disbursements_total.to_s
-
-        elsif category == 'end-cash'
-          category_val += finance.end_cash.to_s
-
-        elsif category == 'individual-total'
-          category_val += finance.individual_total.to_s
-          
-        elsif category == 'pac-total'
-          category_val += finance.pac_total.to_s
-
-        elsif category == 'refund-total'
-          category_val += finance.refund_total.to_s
-        end
-
+        puts finance.attributes
+        puts finance.methods
+        category_val = '$' + finance.read_attribute(category+"?").to_s
         row = [finance.name, category_val]
-
         @table.push(row)
-
       end
+      
+      # for finance in @finances do
+      #   category_val = '$'
+      #   finance.read_attribute(category)
 
+      #   if category == 'candidate-loan'
+      #     category_val += finance.candidate_loan.to_s
+
+      #   elsif category == 'contribution-total'
+      #     category_val += finance.contribution_total.to_s
+
+      #   elsif category == 'debts-owed'
+      #     category_val += finance.debts_owed
+
+      #   elsif category == 'disbursements-total'
+      #     category_val += finance.disbursements_total.to_s
+
+      #   elsif category == 'end-cash'
+      #     category_val += finance.end_cash.to_s
+
+      #   elsif category == 'individual-total'
+      #     category_val += finance.individual_total.to_s
+
+      #   elsif category == 'pac-total'
+      #     category_val += finance.pac_total.to_s
+
+      #   elsif category == 'refund-total'
+      #     category_val += finance.refund_total.to_s
+      #   end
+
+      #   row = [finance.name, category_val]
+
+      #   @table.push(row)
+      # end
+      
       render 'finances/search'
     elsif category.nil? && cycle.empty?
       redirect_to finances_path, alert: 'Please select a cycle and category'
@@ -76,5 +85,4 @@ class FinancesController < ApplicationController
       redirect_to finances_path, alert: 'Please select a cycle'
     end
   end
- end
- 
+end
