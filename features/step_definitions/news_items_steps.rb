@@ -6,6 +6,12 @@ Given /the following states exist/ do |states_table|
   end
 end
 
+Given /the following counties exist/ do |counties_table|
+  counties_table.hashes.each do |county|
+    County.create county
+  end
+end
+
 Given /the following events exist/ do |events_table|
   events_table.hashes.each do |event|
     Event.create event
