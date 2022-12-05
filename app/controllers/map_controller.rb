@@ -19,6 +19,7 @@ class MapController < ApplicationController
   def county
     @state = State.find_by(symbol: params[:state_symbol].upcase)
     handle_state_not_found && return if @state.nil?
+
     @county = get_requested_county @state.id
     handle_county_not_found && return if @state.nil?
 
