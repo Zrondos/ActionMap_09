@@ -2,6 +2,7 @@
 
 class NewsItemsController < ApplicationController
   before_action :set_representative
+  before_action :set_issue
   before_action :set_news_item, only: %i[show]
 
   def index
@@ -16,6 +17,10 @@ class NewsItemsController < ApplicationController
     @representative = Representative.find(
       params[:representative_id]
     )
+  end
+
+  def set_issue
+    @issue = params[:issue]
   end
 
   def set_news_item
