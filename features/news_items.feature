@@ -55,3 +55,18 @@ Scenario: Create news items with missing issue
     And I select "Joseph R. Biden" from "Representative"
     And I press "Save"
     Then I should see "Please select an issue"
+
+Scenario: Delete News items
+    Given I am on the news page for "Joseph R. Biden"
+    And I follow "Add News Article"
+    And I fill in "Title" with "Biden wins election"
+    And I fill in "Link" with "cnn.com"
+    And I fill in "Description" with "He wins!"
+    And I select "Free Speech" from "Issue"
+    And I select "Joseph R. Biden" from "Representative"
+    And I press "Save"
+    And I follow "View all articles"
+    Then I should see "Biden wins election"
+    Then I press "Delete"
+    Then I should see "News was successfully destroyed."
+    And I should not see "Biden wins election"

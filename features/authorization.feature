@@ -16,6 +16,11 @@ Scenario: Login via Google
     And I go to the user profile page
     Then I should see "Your Profile"
 
+Scenario: Sign in, Sign Out
+    Given I am on the login page
+    When I press "Sign in with Google"
+    Then I go to the logout page
+
 
 
 

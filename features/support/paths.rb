@@ -26,8 +26,10 @@ module NavigationHelpers
       "/representatives/#{Representative.find_by(name: $1).id}/representatives/#{Representative.find_by(name: $1).id}/my_news_item/new"
 
     when /^the state page for "([^"]*)"$/ then "/state/CA"
+    
+    when /^the county page for "Chester County"$/ then "/state/CA/county/#{County.find_by(name: "Alameda County").fips_code}"
 
-    when /^the county page for "([^"]*)"$/ then "state/CA/county/1"
+    when /^the county page for "([^"]*)"$/ then "/state/CA/county/#{County.find_by(name: $1).fips_code}"
 
     # when /^the representative\s?page$/ then /representatives
 

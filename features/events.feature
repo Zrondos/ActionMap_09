@@ -16,6 +16,9 @@ Background: Login
     Given the following states exist:
     | name          | symbol | fips_code | is_territory | lat_min | lat_max | long_min | long_max |
     | California    | CA     | 06        |0             | 0       | 0       | 0        | 0 |
+    Given the following counties exist:
+    | name              | state_id | fips_code | fips_class |
+    | Alameda County    | 01        | 1         |0           |
 
 
 
@@ -26,11 +29,13 @@ Scenario: Can add and see events
     And I fill in "Description" with "Discussing property taxes"
     Then I should see "New event"
 
-Scenario: Can see events
+Scenario: Testing Web Steps
     Given I am on the events page
     And I follow "Reset Filters"
     Given I am on the home page
     Given I am on the state page for "California"
-    # Given I am on the county page for "Alameda County"
+    Given I am on the county page for "Alameda County"
+    Given I am on the state page for "Russia"
+    Given I am on the county page for "Chester County"
 
 
