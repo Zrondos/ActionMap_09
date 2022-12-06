@@ -28,7 +28,7 @@ module ApplicationHelper
         link:  Rails.application.routes.url_helpers.representatives_path
       },
       {
-        title: 'Finances',
+        title: 'Campaign Finances',
         link:  Rails.application.routes.url_helpers.finances_path
       }
     ]
